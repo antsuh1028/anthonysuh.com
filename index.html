@@ -1,438 +1,2390 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anthony Suh - Portfolio</title>
     <style>
-        /* Reset and base styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:%23e6f3ff;stop-opacity:1" /><stop offset="70%" style="stop-color:%23b3e0ff;stop-opacity:1" /><stop offset="100%" style="stop-color:%2387ceeb;stop-opacity:1" /></linearGradient></defs><rect width="1200" height="800" fill="url(%23sky)"/><path d="M0,600 L200,400 L400,500 L600,300 L800,450 L1000,200 L1200,350 L1200,800 L0,800 Z" fill="%234a5568" opacity="0.8"/><path d="M0,650 L150,500 L350,550 L550,400 L750,500 L950,300 L1200,400 L1200,800 L0,800 Z" fill="%232d3748" opacity="0.6"/><path d="M0,700 L100,600 L300,650 L500,550 L700,600 L900,450 L1200,500 L1200,800 L0,800 Z" fill="%231a202c" opacity="0.4"/></svg>')
+          no-repeat center center fixed;
+        background-size: cover;
+        overflow-x: hidden;
+      }
+      .container {
+        /* max-width: 1200px; */
+        /* margin: 0 auto;
+        padding: 0 20px; */
+      }
+
+      /* Header */
+      /* Header */
+      /* Header */
+      header {
+        position: fixed;
+        width: 65%;
+        left: 17.5%;
+        top: 0;
+        padding-left: 20px;
+        padding-right: 20px;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px); /* Safari support */
+        z-index: 1000;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 32px rgba(135, 206, 235, 0.2);
+        border-radius: 20px;
+        margin-top: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+
+      /* Enhanced scroll effect */
+      .header-scrolled {
+        background: rgba(255, 255, 255, 0.25) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important;
+      }
+
+      .header-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1.2rem 0;
+        /* width: 100px; */
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .logo {
+        position: absolute;
+        left: 2rem;
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #87ceeb;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .logo:hover {
+        color: #5dade2;
+        transform: scale(1.05);
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+        gap: 3.5rem;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        position: relative;
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+      }
+
+      nav a:hover {
+        color: #87ceeb;
+        background: rgba(135, 206, 235, 0.1);
+        transform: translateY(-2px);
+      }
+
+      nav a.active {
+        color: #87ceeb;
+        background: rgba(135, 206, 235, 0.15);
+      }
+
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        background: transparent !important;
+      }
+
+      /* Floating Background Elements */
+      /* .hero::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+        animation: float 20s ease-in-out infinite;
+        z-index: -1;
+      } */
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
         }
-        
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f5f5f5;
+        50% {
+          transform: translateY(-20px) rotate(180deg);
         }
-        
-        a {
-            text-decoration: none;
-            color: #0078ff;
+      }
+
+      .hero-content {
+        padding-left: 100px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        /* Remove or comment out this line: */
+        /* background: rgba(0, 204, 255, 0.1); */
+      }
+
+      .hero-text {
+        padding-left: 100px;
+        animation: slideInLeft 1s ease-out;
+      }
+
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-50px);
         }
-        
-        a:hover {
-            text-decoration: underline;
+        to {
+          opacity: 1;
+          transform: translateX(0);
         }
-        
-        /* Layout */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
+      }
+
+      .name-with-shark {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .name-with-shark h1 {
+        font-size: 3.5rem;
+        font-weight: bold;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateY(0);
         }
-        
-        /* Header */
-        header {
-            background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            padding: 20px 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 100;
+        40% {
+          transform: translateY(-10px);
         }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        60% {
+          transform: translateY(-5px);
         }
-        
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #333;
+      }
+
+      /* Enhanced Typewriter Effect */
+      .dynamic-text {
+        font-size: 1.8rem;
+        color: #ffeb3b;
+        margin-bottom: 1rem;
+        height: 50px;
+        display: flex;
+        align-items: center;
+      }
+
+      .typewriter {
+        border-right: 3px solid #ffeb3b;
+        animation: blink 1s infinite;
+      }
+
+      @keyframes blink {
+        0%,
+        50% {
+          border-color: transparent;
         }
-        
-        /* Navigation */
-        nav ul {
-            display: flex;
-            list-style: none;
+        51%,
+        100% {
+          border-color: #ffeb3b;
         }
-        
-        nav ul li {
-            margin-left: 20px;
+      }
+
+      .hero-text p {
+        font-size: 1.2rem;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 2rem;
+        font-weight: bold;
+        line-height: 1.8;
+      }
+
+      /* Tech Badges with Animation */
+      .tech-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .tech-badge {
+        background: rgba(0, 100, 128, 0.2);
+        color: rgb(255, 255, 255);
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+        font-size: 0.9rem;
+        /* backdrop-filter: blur(10px); */
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        animation: fadeInUp 1s ease-out;
+        animation-fill-mode: both;
+        transition: all 0.3s ease;
+      }
+
+      .tech-badge:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .tech-badge:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .tech-badge:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .tech-badge:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      .tech-badge:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+
+      .tech-badge:hover {
+        transform: translateY(-5px) scale(1.05);
+        background: rgba(0, 60, 255, 0.3);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
         }
-        
-        nav ul li a {
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s;
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
-        
-        nav ul li a:hover {
-            color: #0078ff;
-            text-decoration: none;
+      }
+
+      /* Social Links with Hover Effects */
+      .hero-social-links {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .hero-social-links a {
+        width: 50px;
+        height: 50px;
+        background: rgba(0, 100, 128, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .hero-social-links a:hover {
+        transform: translateY(-5px) rotate(360deg);
+        background: #0078ff;
+        box-shadow: 0 10px 25px rgba(0, 120, 255, 0.4);
+      }
+
+      /* CTA Buttons */
+      .cta-buttons {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 30px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      .btn:hover::before {
+        left: 100%;
+      }
+
+      .btn:first-child {
+        background: #87ceeb;
+        color: white;
+        box-shadow: 0 5px 15px rgba(135, 206, 235, 0.3);
+      }
+
+      .btn:first-child:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(135, 206, 235, 0.4);
+        background: #5dade2;
+      }
+
+      .btn-outline {
+        background: transparent;
+        color: white;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+      }
+
+      .btn-outline:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-3px);
+      }
+
+      /* Hero Image with 3D Effect */
+      .hero-img {
+        position: relative;
+        animation: slideInRight 1s ease-out;
+      }
+
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(50px);
         }
-        
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            background-color: #f8f9fa;
-            margin-top: 60px;
+        to {
+          opacity: 1;
+          transform: translateX(0);
         }
-        
+      }
+
+      .hero-img img {
+        margin-left: 100px;
+        width: 100%;
+        max-width: 300px; /* Even smaller */
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
+      }
+
+      /* .hero-img:hover img {
+        transform: scale(1.05) rotateY(5deg);
+      } */
+
+      /* Floating Icons */
+      .floating-icon {
+        position: absolute;
+        animation: floatAround 6s ease-in-out infinite;
+        animation-delay: var(--delay);
+      }
+
+      /* .floating-icon:nth-child(2) {
+        top: 20%;
+        right: 10%;
+      }
+      .floating-icon:nth-child(3) {
+        top: 60%;
+        right: 20%;
+      }
+      .floating-icon:nth-child(4) {
+        top: 80%;
+        right: 5%;
+      } */
+
+      @keyframes floatAround {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        33% {
+          transform: translateY(-15px) rotate(120deg);
+        }
+        66% {
+          transform: translateY(5px) rotate(240deg);
+        }
+      }
+
+      /* Sections */
+      section {
+        padding: 80px 0;
+        position: relative;
+      }
+
+      section:nth-child(even) {
+        background: #f8f9fa;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .section-title h2 {
+        font-size: 2.5rem;
+        color: #87ceeb;
+        margin-bottom: 1rem;
+        position: relative;
+      }
+
+      .section-title h2::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 3px;
+        background: linear-gradient(45deg, #87ceeb, #b3e0ff);
+        border-radius: 2px;
+      }
+
+      /* Enhanced Timeline */
+      .timeline {
+        position: relative;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .timeline::after {
+        content: "";
+        position: absolute;
+        width: 6px;
+        background: linear-gradient(180deg, #87ceeb, #b3e0ff);
+        top: 0;
+        bottom: 0;
+        left: 20px;
+        margin-left: -3px;
+        border-radius: 3px;
+      }
+
+      .timeline-item {
+        padding: 10px 40px;
+        position: relative;
+        background-color: inherit;
+        width: 100%;
+        margin-bottom: 30px;
+        opacity: 0;
+        animation: slideInFromLeft 0.6s ease-out forwards;
+      }
+
+      .timeline-item:nth-child(even) {
+        animation: slideInFromRight 0.6s ease-out forwards;
+      }
+
+      @keyframes slideInFromLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideInFromRight {
+        from {
+          opacity: 0;
+          transform: translateX(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .timeline-marker {
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        left: 9px;
+        background: linear-gradient(45deg, #87ceeb, #b3e0ff);
+        border: 4px solid white;
+        top: 15px;
+        border-radius: 50%;
+        z-index: 700; /* This was already there - keeps marker on top */
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 0 0 rgba(135, 206, 235, 0.4);
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(135, 206, 235, 0.4);
+        }
+        70% {
+          box-shadow: 0 0 0 10px rgba(135, 206, 235, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(135, 206, 235, 0);
+        }
+      }
+
+      .timeline-item-content {
+        padding: 25px 30px;
+        background: white;
+        position: relative;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        border-left: 5px solid #87ceeb;
+      }
+
+      .timeline-item:hover .timeline-item-content {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      }
+      /* Timeline Dropdown Styles */
+      .timeline-dropdown {
+        cursor: pointer;
+      }
+
+      .timeline-header {
+        position: relative;
+      }
+
+      .dropdown-arrow {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 12px;
+        color: #87ceeb;
+        transition: transform 0.3s ease;
+      }
+
+      .timeline-details-dropdown {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease, padding 0.4s ease;
+        padding: 0 30px;
+      }
+
+      .timeline-dropdown:hover .timeline-details-dropdown {
+        max-height: 500px;
+        padding: 15px 30px 0 30px;
+      }
+
+      .timeline-dropdown:hover .dropdown-arrow {
+        transform: translateY(-50%) rotate(180deg);
+      }
+
+      .timeline-dropdown .timeline-details {
+        margin: 0;
+        opacity: 0;
+        transition: opacity 0.3s ease 0.1s;
+      }
+
+      .timeline-dropdown:hover .timeline-details {
+        opacity: 1;
+      }
+
+      /* Project Cards */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .project-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .project-card:hover {
+        transform: translateY(-15px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      }
+
+      .project-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(45deg, #87ceeb, #b3e0ff);
+      }
+
+      .project-img {
+        height: 200px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .project-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .project-card:hover .project-img img {
+        transform: scale(1.1);
+      }
+
+      .project-info {
+        padding: 1.5rem;
+      }
+
+      /* Contact Form */
+      .contact-form {
+        max-width: 600px;
+        margin: 0 auto;
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+        color: #333;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #e1e5e9;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+      }
+
+      .form-control:focus {
+        outline: none;
+        border-color: #0078ff;
+        box-shadow: 0 0 0 3px rgba(0, 120, 255, 0.1);
+      }
+
+      textarea.form-control {
+        height: 120px;
+        resize: vertical;
+      }
+
+      /* Footer */
+      footer {
+        background: #1a1a1a;
+        color: white;
+        text-align: center;
+        padding: 2rem 0;
+      }
+
+      .social-links {
+        margin-bottom: 1rem;
+      }
+
+      .social-links a {
+        color: white;
+        text-decoration: none;
+        margin: 0 1rem;
+        transition: color 0.3s ease;
+      }
+
+      .social-links a:hover {
+        color: #0078ff;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
         .hero-content {
-            text-align: center;
-            padding: 20px;
+          grid-template-columns: 1fr;
+          text-align: center;
+          gap: 2rem;
         }
-        
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            color: #333;
+
+        .name-with-shark h1 {
+          font-size: 2.5rem;
         }
-        
-        .hero p {
-            font-size: 20px;
-            max-width: 800px;
-            margin: 0 auto 30px;
-            color: #666;
+
+        .cta-buttons {
+          flex-direction: column;
+          align-items: center;
         }
-        
-        .btn {
-            display: inline-block;
-            background-color: #0078ff;
-            color: #fff;
-            padding: 12px 30px;
-            border-radius: 4px;
-            font-weight: bold;
-            transition: background-color 0.3s;
+
+        nav ul {
+          gap: 1rem;
         }
-        
-        .btn:hover {
-            background-color: #0056b3;
-            text-decoration: none;
+
+        .timeline-item {
+          padding-left: 30px;
         }
-        
-        /* About Section */
-        section {
-            padding: 80px 0;
+
+        .timeline::after {
+          content: "";
+          position: absolute;
+          width: 6px;
+          background: linear-gradient(180deg, #87ceeb, #b3e0ff);
+          top: 0;
+          bottom: 0;
+          left: 20px;
+          margin-left: -3px;
+          border-radius: 3px;
+          /* z-index: 1000;  Added this line - one layer below the marker */
         }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
+
+        .timeline-marker {
+          left: 4px;
         }
-        
-        .section-title h2 {
-            font-size: 36px;
-            position: relative;
-            padding-bottom: 20px;
+      }
+
+      /* Scroll animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
         }
-        
-        .section-title h2::after {
-            content: "";
-            position: absolute;
-            width: 50px;
-            height: 3px;
-            background-color: #0078ff;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
-        
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-        
-        .about-img {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .about-img img {
-            width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .about-text {
-            flex: 2;
-            min-width: 300px;
-        }
-        
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .project-card {
-            background-color: #fff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .project-img {
-            height: 200px;
-            background-color: #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .project-info {
-            padding: 20px;
-        }
-        
-        .project-info h3 {
-            margin-bottom: 10px;
-        }
-        
-        .project-info p {
-            color: #666;
-            margin-bottom: 15px;
-        }
-        
-        /* Contact Section */
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 500;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-        
-        textarea.form-control {
-            height: 150px;
-            resize: vertical;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: #333;
-            color: #fff;
-            padding: 40px 0;
-            text-align: center;
-        }
-        
-        .social-links {
-            margin: 20px 0;
-        }
-        
-        .social-links a {
-            color: #fff;
-            margin: 0 10px;
-            font-size: 24px;
-        }
-        
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            nav ul {
-                margin-top: 20px;
-            }
-            
-            .hero h1 {
-                font-size: 36px;
-            }
-            
-            .hero p {
-                font-size: 18px;
-            }
-            
-            section {
-                padding: 60px 0;
-            }
-        }
+      }
+
+      .fade-in-up {
+        animation: fadeInUp 0.6s ease-out forwards;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Header -->
     <header>
-        <div class="container header-content">
-            <div class="logo">Anthony Suh</div>
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
+      <div class="container header-content">
+        <!-- <a href="#home" class="logo">Anthony Suh</a> -->
+        <nav>
+          <ul>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#home">O</a></li>
+            <li><a href="#about">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Enhanced Hero Section -->
     <section id="home" class="hero">
-        <div class="container hero-content">
+      <div class="container hero-content">
+        <div class="hero-text">
+          <div class="name-with-shark">
             <h1>Hi, I'm Anthony</h1>
-            <p>I'm a web developer with a passion for creating beautiful and functional websites. Welcome to my portfolio!</p>
-            <a href="#projects" class="btn">View My Work</a>
+          </div>
+
+          <p>
+            Currently a Computer Science student at the University of
+            California, Irvine, passionate about creating innovative web
+            solutions and bringing ideas to life through code.
+          </p>
+
+          <div class="tech-badges">
+            <div class="tech-badge">React</div>
+            <div class="tech-badge">JavaScript</div>
+            <div class="tech-badge">Python</div>
+            <div class="tech-badge">MongoDB</div>
+            <div class="tech-badge">AWS</div>
+          </div>
+
+          <div class="hero-social-links">
+            <a href="https://www.linkedin.com/in/anthonysuh/" title="LinkedIn">
+              <svg viewBox="0 0 24 24" width="20" height="20">
+                <path
+                  fill="currentColor"
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                />
+              </svg>
+            </a>
+            <a href="https://github.com/antsuh1028" title="GitHub">
+              <svg viewBox="0 0 24 24" width="20" height="20">
+                <path
+                  fill="currentColor"
+                  d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://www.instagram.com/anthonythesuh/"
+              title="Instagram"
+            >
+              <svg viewBox="0 0 24 24" width="20" height="20">
+                <path
+                  fill="currentColor"
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
+                />
+              </svg>
+            </a>
+          </div>
+
+          <div class="cta-buttons">
+            <a href="./documents/Anthony_Suh_New_Grad_Resume.pdf" class="btn"
+              ><svg
+                viewBox="0 0 24 24"
+                width="16"
+                height="16"
+                style="margin-right: 5px"
+              >
+                <path
+                  fill="currentColor"
+                  d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"
+                />
+              </svg>
+              Resume</a
+            >
+
+            <a href="#contact" class="btn btn-outline">Contact Me</a>
+          </div>
         </div>
+
+        <div class="hero-img">
+          <img src="./images/JP2.jpg" alt="Anthony Suh" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <div id="projects" class="section-title" style="margin-top: 80px">
+      <h2>Featured Projects</h2>
+    </div>
+
+    <div class="projects-grid">
+      <!-- Project 1 -->
+      <div class="project-card">
+        <div class="project-img">
+          <img src="/api/placeholder/300/200" alt="DineSafe Project" />
+        </div>
+        <div class="project-info">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 10px;
+            "
+          >
+            <div style="display: flex; align-items: center; gap: 10px">
+              <h3>DineSafe</h3>
+              <a
+                href="https://github.com/Geoffrey0953/Web-Jam-Hackathon"
+                target="_blank"
+                style="
+                  background: #333;
+                  color: white;
+                  padding: 3px 6px;
+                  border-radius: 8px;
+                  font-size: 10px;
+                  text-decoration: none;
+                  display: flex;
+                  align-items: center;
+                  gap: 3px;
+                  transition: all 0.3s ease;
+                "
+                onmouseover="this.style.background='#0078ff'"
+                onmouseout="this.style.background='#333'"
+              >
+                <svg
+                  width="10"
+                  height="10"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                  />
+                </svg>
+                GitHub
+              </a>
+            </div>
+            <span
+              style="
+                background: #0078ff;
+                color: white;
+                padding: 3px 8px;
+                border-radius: 4px;
+                font-size: 12px;
+              "
+            >
+              2nd Place Winner, UCI Hackathon 2025
+            </span>
+          </div>
+          <p style="font-weight: 500; margin-bottom: 10px; color: #666">
+            Restaurant Health Inspection Platform
+          </p>
+          <ul style="padding-left: 20px; margin-bottom: 15px; font-size: 14px">
+            <li>
+              Collaborated in a team of <strong>4</strong> to create a
+              full-stack MERN application visualizing health inspection data for
+              <strong>400+</strong> Orange County restaurants
+            </li>
+            <li>
+              Developed a Python script utilizing web scraping and OpenAI's GPT
+              API for automated report summarization
+            </li>
+            <li>
+              Built interactive map interface with Google Maps API that features
+              real-time geolocation and custom markers
+            </li>
+          </ul>
+          <div
+            style="display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px"
+          >
+            <span
+              style="
+                background: #f0f0f0;
+                padding: 3px 8px;
+                border-radius: 20px;
+                font-size: 12px;
+              "
+              >MongoDB</span
+            >
+            <span
+              style="
+                background: #f0f0f0;
+                padding: 3px 8px;
+                border-radius: 20px;
+                font-size: 12px;
+              "
+              >Express</span
+            >
+            <span
+              style="
+                background: #f0f0f0;
+                padding: 3px 8px;
+                border-radius: 20px;
+                font-size: 12px;
+              "
+              >React</span
+            >
+            <span
+              style="
+                background: #f0f0f0;
+                padding: 3px 8px;
+                border-radius: 20px;
+                font-size: 12px;
+              "
+              >Node.js</span
+            >
+            <span
+              style="
+                background: #f0f0f0;
+                padding: 3px 8px;
+                border-radius: 20px;
+                font-size: 12px;
+              "
+              >Python</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2 - Updated Homesteadr -->
+      <div class="project-card">
+        <div class="project-img">
+          <img src="/api/placeholder/300/200" alt="Homesteadr Project" />
+        </div>
+        <div class="project-info">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 10px;
+            "
+          >
+            <div style="display: flex; align-items: center; gap: 10px">
+              <h3>Homesteadr</h3>
+              <a
+                href="https://github.com/antsuh1028/HomeSteadr"
+                target="_blank"
+                style="
+                  background: #333;
+                  color: white;
+                  padding: 3px 6px;
+                  border-radius: 8px;
+                  font-size: 10px;
+                  text-decoration: none;
+                  display: flex;
+                  align-items: center;
+                  gap: 3px;
+                  transition: all 0.3s ease;
+                "
+                onmouseover="this.style.background='#0078ff'"
+                onmouseout="this.style.background='#333'"
+              >
+                <svg
+                  width="10"
+                  height="10"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                  />
+                </svg>
+                GitHub
+              </a>
+            </div>
+            <span
+              style="
+                background: #0078ff;
+                color: white;
+                padding: 3px 8px;
+                border-radius: 4px;
+                font-size: 12px;
+              "
+            >
+              Hack@UCI 2024
+            </span>
+          </div>
+          <p style="font-weight: 500; margin-bottom: 10px; color: #666">
+            AI-Powered Real Estate Investment Platform
+          </p>
+          <ul style="padding-left: 20px; margin-bottom: 15px; font-size: 14px">
+            <li>
+              Built full-stack real estate platform integrating
+              <strong>Groq AI</strong> and <strong>Exa Search</strong> for
+              intelligent property analysis and environmental risk assessment
+              across multiple cities
+            </li>
+            <li>
+              Developed comprehensive backend with Express.js serving AI-powered
+              endpoints for property data aggregation, news analysis, and risk
+              scoring algorithms
+            </li>
+            <li>
+              Implemented interactive React frontend with Google Maps
+              integration, Firebase authentication, and real-time portfolio
+              tracking for
+              <strong>1000+</strong> property records
+            </li>
+          </ul>
+          <div
+            style="display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px"
+          >
+            <span
+              style="
+                background: #f0f0f0;
+                padding: 3px 8px;
+                border-radius: 20px;
+                font-size: 12px;
+              "
+              >React</span
+            >
+            <span
+              style="
+                background: #f0f0f0;
+                padding: 3px 8px;
+                border-radius: 20px;
+                font-size: 12px;
+              "
+              >TypeScript</span
+            >
+            <span
+              style="
+                background: #f0f0f0;
+                padding: 3px 8px;
+                border-radius: 20px;
+                font-size: 12px;
+              "
+              >Node.js</span
+            >
+            <span
+              style="
+                background: #f0f0f0;
+                padding: 3px 8px;
+                border-radius: 20px;
+                font-size: 12px;
+              "
+              >Firebase</span
+            >
+            <span
+              style="
+                background: #f0f0f0;
+                padding: 3px 8px;
+                border-radius: 20px;
+                font-size: 12px;
+              "
+              >Groq AI</span
+            >
+            <span
+              style="
+                background: #f0f0f0;
+                padding: 3px 8px;
+                border-radius: 20px;
+                font-size: 12px;
+              "
+              >Google Maps API</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3 - Sonder App -->
+      <div class="project-card">
+        <div class="project-img">
+          <img src="/api/placeholder/300/200" alt="Sonder App" />
+        </div>
+        <div class="project-info">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 10px;
+            "
+          >
+            <div style="display: flex; align-items: center; gap: 10px">
+              <h3>Sonder</h3>
+              <a
+                href="https://github.com/kellyserafico/sonder"
+                target="_blank"
+                style="
+                  background: #333;
+                  color: white;
+                  padding: 3px 6px;
+                  border-radius: 8px;
+                  font-size: 10px;
+                  text-decoration: none;
+                  display: flex;
+                  align-items: center;
+                  gap: 3px;
+                  transition: all 0.3s ease;
+                "
+                onmouseover="this.style.background='#0078ff'"
+                onmouseout="this.style.background='#333'"
+              >
+                <svg
+                  width="10"
+                  height="10"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                  />
+                </svg>
+                GitHub
+              </a>
+            </div>
+            <span
+              style="
+                background: #0078ff;
+                color: white;
+                padding: 3px 8px;
+                border-radius: 4px;
+                font-size: 12px;
+              "
+            >
+              LA Hacks 2025
+            </span>
+          </div>
+          <p style="font-weight: 500; margin-bottom: 10px; color: #666">
+            Social Media App for Daily Reflection
+          </p>
+          <ul style="padding-left: 20px; margin-bottom: 15px; font-size: 14px">
+            <li>
+              Built full-stack React Native mobile application with secure user
+              authentication and real-time social features for daily prompt
+              responses
+            </li>
+            <li>
+              Implemented interactive word cloud visualization using animated
+              components and gradient backgrounds for enhanced user engagement
+            </li>
+            <li>
+              Designed intuitive user interface with custom navigation, profile
+              management, and comment system using TypeScript and Expo Router
+            </li>
+          </ul>
+          <div
+            style="display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px"
+          >
+            <span
+              style="
+                background: #f0f0f0;
+                padding: 3px 8px;
+                border-radius: 20px;
+                font-size: 12px;
+              "
+              >React Native</span
+            >
+            <span
+              style="
+                background: #f0f0f0;
+                padding: 3px 8px;
+                border-radius: 20px;
+                font-size: 12px;
+              "
+              >TypeScript</span
+            >
+            <span
+              style="
+                background: #f0f0f0;
+                padding: 3px 8px;
+                border-radius: 20px;
+                font-size: 12px;
+              "
+              >Expo</span
+            >
+            <span
+              style="
+                background: #f0f0f0;
+                padding: 3px 8px;
+                border-radius: 20px;
+                font-size: 12px;
+              "
+              >Node.js</span
+            >
+            <span
+              style="
+                background: #f0f0f0;
+                padding: 3px 8px;
+                border-radius: 20px;
+                font-size: 12px;
+              "
+              >PostgreSQL</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Experience Section -->
+    <section id="experience">
+      <div class="container">
+        <div class="section-title">
+          <h2>Professional Experience</h2>
+        </div>
+
+        <div class="timeline">
+          <!-- Latest Experience Item -->
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-item-content timeline-dropdown">
+              <div class="timeline-header">
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-bottom: 10px;
+                  "
+                >
+                  <h3>Software Development Intern</h3>
+                  <img
+                    src="./images/main_logo.png"
+                    alt="AdamsFoods Logo"
+                    style="height: 24px; width: auto"
+                  />
+                </div>
+
+                <div
+                  style="
+                    background: #f0f8ff;
+                    color: #333;
+                    padding: 6px 12px;
+                    border-radius: 8px;
+                    font-size: 13px;
+                    font-weight: 500;
+                    display: inline-block;
+                    margin: 4px 0;
+                    border: 1px solid #d0e8ff;
+                  "
+                >
+                  AdamsFoods
+                </div>
+
+                <div
+                  style="
+                    background: #e6f3ff;
+                    color: #0078ff;
+                    padding: 6px 12px;
+                    border-radius: 8px;
+                    font-size: 13px;
+                    font-weight: 500;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 5px;
+                    margin-left: 10px;
+                    border: 1px solid #b3e0ff;
+                  "
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M19,5V7H5V5H19M5,19V9H19V19H5Z"
+                    />
+                  </svg>
+                  April 2025 - Present
+                </div>
+
+                <div
+                  style="
+                    background: #f5f5f5;
+                    color: #666;
+                    padding: 6px 12px;
+                    border-radius: 8px;
+                    font-size: 13px;
+                    font-weight: 500;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 5px;
+                    margin-left: 10px;
+                    border: 1px solid #ddd;
+                  "
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z"
+                    />
+                  </svg>
+                  Los Angeles, CA
+                </div>
+
+                <div class="dropdown-arrow">▼</div>
+              </div>
+              <div class="timeline-details-dropdown">
+                <div style="display: flex; gap: 20px; align-items: flex-start">
+                  <div style="flex: 1">
+                    <ul class="timeline-details" style="margin: 0 0 15px 0">
+                      <li>
+                        Built and deployed B2B wholesale platform using React,
+                        Node.js, and PostgreSQL with user authentication and
+                        shopping cart functionality, acquiring
+                        <strong>10</strong> new restaurant clients
+                      </li>
+                      <li>
+                        Implemented secure user profile management and product
+                        catalog system with comprehensive admin dashboard,
+                        reducing order processing time by <strong>35%</strong>
+                      </li>
+                    </ul>
+
+                    <!-- Tech Stack -->
+                    <div
+                      style="
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 5px;
+                        margin-top: 10px;
+                      "
+                    >
+                      <span
+                        style="
+                          background: #e8f4f8;
+                          color: #0066cc;
+                          padding: 3px 8px;
+                          border-radius: 12px;
+                          font-size: 11px;
+                          font-weight: 500;
+                        "
+                        >React</span
+                      >
+                      <span
+                        style="
+                          background: #e8f4f8;
+                          color: #0066cc;
+                          padding: 3px 8px;
+                          border-radius: 12px;
+                          font-size: 11px;
+                          font-weight: 500;
+                        "
+                        >Node.js</span
+                      >
+                      <span
+                        style="
+                          background: #e8f4f8;
+                          color: #0066cc;
+                          padding: 3px 8px;
+                          border-radius: 12px;
+                          font-size: 11px;
+                          font-weight: 500;
+                        "
+                        >PostgreSQL</span
+                      >
+                      <span
+                        style="
+                          background: #e8f4f8;
+                          color: #0066cc;
+                          padding: 3px 8px;
+                          border-radius: 12px;
+                          font-size: 11px;
+                          font-weight: 500;
+                        "
+                        >AWS S3</span
+                      >
+                    </div>
+                  </div>
+                  <div style="flex-shrink: 0">
+                    <img
+                      src="./images/afwholesale.jpg"
+                      alt="AdamsFoods Wholesale Platform"
+                      style="
+                        width: 400px;
+                        height: auto;
+                        border-radius: 8px;
+                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                        border: 1px solid rgba(135, 206, 235, 0.3);
+                        transition: transform 0.3s ease;
+                        cursor: pointer;
+                      "
+                      onclick="window.open('https://adamsfoodswholesale.com', '_blank')"
+                      onmouseover="this.style.transform='scale(1.05)'"
+                      onmouseout="this.style.transform='scale(1)'"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Experience Item 1 -->
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-item-content timeline-dropdown">
+              <div class="timeline-header">
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-bottom: 10px;
+                  "
+                >
+                  <h3>Software Development Intern</h3>
+                  <img
+                    src="./images/main_logo.png"
+                    alt="AdamsFoods Logo"
+                    style="height: 24px; width: auto"
+                  />
+                </div>
+
+                <div
+                  style="
+                    background: #f0f8ff;
+                    color: #333;
+                    padding: 6px 12px;
+                    border-radius: 8px;
+                    font-size: 13px;
+                    font-weight: 500;
+                    display: inline-block;
+                    margin: 4px 0;
+                    border: 1px solid #d0e8ff;
+                  "
+                >
+                  AdamsFoods
+                </div>
+
+                <div
+                  style="
+                    background: #e6f3ff;
+                    color: #0078ff;
+                    padding: 6px 12px;
+                    border-radius: 8px;
+                    font-size: 13px;
+                    font-weight: 500;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 5px;
+                    margin-left: 10px;
+                    border: 1px solid #b3e0ff;
+                  "
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M19,5V7H5V5H19M5,19V9H19V19H5Z"
+                    />
+                  </svg>
+                  June 2024 - September 2024
+                </div>
+
+                <div
+                  style="
+                    background: #f5f5f5;
+                    color: #666;
+                    padding: 6px 12px;
+                    border-radius: 8px;
+                    font-size: 13px;
+                    font-weight: 500;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 5px;
+                    margin-left: 10px;
+                    border: 1px solid #ddd;
+                  "
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z"
+                    />
+                  </svg>
+                  Los Angeles, CA
+                </div>
+
+                <div class="dropdown-arrow">▼</div>
+              </div>
+              <div class="timeline-details-dropdown">
+                <div style="display: flex; gap: 20px; align-items: flex-start">
+                  <div style="flex: 1">
+                    <ul class="timeline-details" style="margin: 0 0 15px 0">
+                      <li>
+                        Engineered full-stack (AWS Lightsail, React, JavaScript,
+                        HTML/CSS, MongoDB, Express) web application for CRUD
+                        supply chain management, enabling tracking of
+                        <strong>300+</strong> products and preventing
+                        <strong>$15,000/month</strong> in losses
+                      </li>
+                      <li>
+                        Automated multi-step inventory process, replacing
+                        handwritten logs and redundant data entry, saving
+                        <strong>5-7 hours</strong> weekly and eliminating
+                        transcription errors
+                      </li>
+                      <li>
+                        Led complete development lifecycle, including system
+                        design and AWS deployment
+                      </li>
+                    </ul>
+
+                    <!-- Tech Stack -->
+                    <div
+                      style="
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 5px;
+                        margin-top: 10px;
+                      "
+                    >
+                      <span
+                        style="
+                          background: #e8f4f8;
+                          color: #0066cc;
+                          padding: 3px 8px;
+                          border-radius: 12px;
+                          font-size: 11px;
+                          font-weight: 500;
+                        "
+                        >AWS Lightsail</span
+                      >
+                      <span
+                        style="
+                          background: #e8f4f8;
+                          color: #0066cc;
+                          padding: 3px 8px;
+                          border-radius: 12px;
+                          font-size: 11px;
+                          font-weight: 500;
+                        "
+                        >React</span
+                      >
+                      <span
+                        style="
+                          background: #e8f4f8;
+                          color: #0066cc;
+                          padding: 3px 8px;
+                          border-radius: 12px;
+                          font-size: 11px;
+                          font-weight: 500;
+                        "
+                        >JavaScript</span
+                      >
+                      <span
+                        style="
+                          background: #e8f4f8;
+                          color: #0066cc;
+                          padding: 3px 8px;
+                          border-radius: 12px;
+                          font-size: 11px;
+                          font-weight: 500;
+                        "
+                        >HTML/CSS</span
+                      >
+                      <span
+                        style="
+                          background: #e8f4f8;
+                          color: #0066cc;
+                          padding: 3px 8px;
+                          border-radius: 12px;
+                          font-size: 11px;
+                          font-weight: 500;
+                        "
+                        >MongoDB</span
+                      >
+                      <span
+                        style="
+                          background: #e8f4f8;
+                          color: #0066cc;
+                          padding: 3px 8px;
+                          border-radius: 12px;
+                          font-size: 11px;
+                          font-weight: 500;
+                        "
+                        >Express</span
+                      >
+                    </div>
+                  </div>
+                  <div style="flex-shrink: 0">
+                    <img
+                      src="./images/afdc.png"
+                      alt="AFDC Application"
+                      style="
+                        width: 400px;
+                        height: auto;
+                        border-radius: 8px;
+                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                        border: 1px solid rgba(135, 206, 235, 0.3);
+                        transition: transform 0.3s ease;
+                      "
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Experience Item 2 -->
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-item-content timeline-dropdown">
+              <div class="timeline-header">
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-bottom: 10px;
+                  "
+                >
+                  <h3>Full-Stack Developer</h3>
+                  <img
+                    src="./images/ctc.png"
+                    alt="CTC Logo"
+                    style="
+                      height: 24px;
+                      width: 24px;
+                      border-radius: 50%;
+                      object-fit: cover;
+                    "
+                  />
+                  <a
+                    href="https://github.com/ctc-uci/lpa"
+                    target="_blank"
+                    style="
+                      background: #333;
+                      color: white;
+                      padding: 4px 8px;
+                      border-radius: 12px;
+                      font-size: 11px;
+                      text-decoration: none;
+                      display: flex;
+                      align-items: center;
+                      gap: 4px;
+                      transition: all 0.3s ease;
+                    "
+                    onmouseover="this.style.background='#0078ff'"
+                    onmouseout="this.style.background='#333'"
+                  >
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path
+                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                      />
+                    </svg>
+                    GitHub
+                  </a>
+                </div>
+
+                <div
+                  style="
+                    background: #f0f8ff;
+                    color: #333;
+                    padding: 6px 12px;
+                    border-radius: 8px;
+                    font-size: 13px;
+                    font-weight: 500;
+                    display: inline-block;
+                    margin: 4px 0;
+                    border: 1px solid #d0e8ff;
+                  "
+                >
+                  Commit the Change @ UCI - La Peña Cultural Center
+                </div>
+
+                <div
+                  style="
+                    background: #e6f3ff;
+                    color: #0078ff;
+                    padding: 6px 12px;
+                    border-radius: 8px;
+                    font-size: 13px;
+                    font-weight: 500;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 5px;
+                    margin-left: 10px;
+                    border: 1px solid #b3e0ff;
+                  "
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M19,5V7H5V5H19M5,19V9H19V19H5Z"
+                    />
+                  </svg>
+                  June 2024 - Present
+                </div>
+
+                <div
+                  style="
+                    background: #f5f5f5;
+                    color: #666;
+                    padding: 6px 12px;
+                    border-radius: 8px;
+                    font-size: 13px;
+                    font-weight: 500;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 5px;
+                    margin-left: 10px;
+                    border: 1px solid #ddd;
+                  "
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z"
+                    />
+                  </svg>
+                  Irvine, CA
+                </div>
+
+                <div class="dropdown-arrow">▼</div>
+              </div>
+              <div class="timeline-details-dropdown">
+                <div style="display: flex; gap: 20px; align-items: flex-start">
+                  <div style="flex: 1">
+                    <ul class="timeline-details" style="margin: 0 0 15px 0">
+                      <li>
+                        Contributed to full-stack development in a
+                        <strong>15-person</strong> team for nonprofit cultural
+                        center platform using React, Node.js, Express, and
+                        PostgreSQL
+                      </li>
+                      <li>
+                        Led migration from paper-based to digital information
+                        storage and streamlined class scheduling by
+                        <strong>50%</strong> through automated calendar and
+                        registration features for <strong>20+</strong> weekly
+                        cultural classes
+                      </li>
+                    </ul>
+
+                    <!-- Tech Stack -->
+                    <div
+                      style="
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 5px;
+                        margin-top: 10px;
+                      "
+                    >
+                      <span
+                        style="
+                          background: #e8f4f8;
+                          color: #0066cc;
+                          padding: 3px 8px;
+                          border-radius: 12px;
+                          font-size: 11px;
+                          font-weight: 500;
+                        "
+                        >React</span
+                      >
+                      <span
+                        style="
+                          background: #e8f4f8;
+                          color: #0066cc;
+                          padding: 3px 8px;
+                          border-radius: 12px;
+                          font-size: 11px;
+                          font-weight: 500;
+                        "
+                        >Node.js</span
+                      >
+                      <span
+                        style="
+                          background: #e8f4f8;
+                          color: #0066cc;
+                          padding: 3px 8px;
+                          border-radius: 12px;
+                          font-size: 11px;
+                          font-weight: 500;
+                        "
+                        >Express</span
+                      >
+                      <span
+                        style="
+                          background: #e8f4f8;
+                          color: #0066cc;
+                          padding: 3px 8px;
+                          border-radius: 12px;
+                          font-size: 11px;
+                          font-weight: 500;
+                        "
+                        >PostgreSQL</span
+                      >
+                    </div>
+                  </div>
+                  <div style="flex-shrink: 0">
+                    <img
+                      src="./images/ctc_laptop.png"
+                      alt="CTC Application"
+                      style="
+                        width: 400px;
+                        height: auto;
+                        border-radius: 8px;
+                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                        border: 1px solid rgba(135, 206, 235, 0.3);
+                        transition: transform 0.3s ease;
+                      "
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Experience Item 3 -->
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-item-content timeline-dropdown">
+              <div class="timeline-header">
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-bottom: 10px;
+                  "
+                >
+                  <h3>Supply Chain Intern</h3>
+                  <img
+                    src="./images/main_logo.png"
+                    alt="AdamsFoods Logo"
+                    style="height: 24px; width: auto"
+                  />
+                </div>
+
+                <div
+                  style="
+                    background: #f0f8ff;
+                    color: #333;
+                    padding: 6px 12px;
+                    border-radius: 8px;
+                    font-size: 13px;
+                    font-weight: 500;
+                    display: inline-block;
+                    margin: 4px 0;
+                    border: 1px solid #d0e8ff;
+                  "
+                >
+                  AdamsFoods
+                </div>
+
+                <div
+                  style="
+                    background: #e6f3ff;
+                    color: #0078ff;
+                    padding: 6px 12px;
+                    border-radius: 8px;
+                    font-size: 13px;
+                    font-weight: 500;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 5px;
+                    margin-left: 10px;
+                    border: 1px solid #b3e0ff;
+                  "
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M19,5V7H5V5H19M5,19V9H19V19H5Z"
+                    />
+                  </svg>
+                  June 2023 - September 2023
+                </div>
+
+                <div
+                  style="
+                    background: #f5f5f5;
+                    color: #666;
+                    padding: 6px 12px;
+                    border-radius: 8px;
+                    font-size: 13px;
+                    font-weight: 500;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 5px;
+                    margin-left: 10px;
+                    border: 1px solid #ddd;
+                  "
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z"
+                    />
+                  </svg>
+                  Los Angeles, CA
+                </div>
+
+                <div class="dropdown-arrow">▼</div>
+              </div>
+              <div class="timeline-details-dropdown">
+                <div style="flex: 1">
+                  <ul class="timeline-details" style="margin: 0 0 15px 0">
+                    <li>
+                      Optimized inventory management processes by digitizing
+                      paper records and implementing Excel tracking systems for
+                      vendor coordination and logistics workflow documentation
+                    </li>
+                    <li>
+                      Analyzed supply chain operations and documented
+                      procurement procedures, successfully training new team
+                      members on warehouse and distribution protocols
+                    </li>
+                  </ul>
+
+                  <!-- Tech Stack -->
+                  <div
+                    style="
+                      display: flex;
+                      flex-wrap: wrap;
+                      gap: 5px;
+                      margin-top: 10px;
+                    "
+                  >
+                    <span
+                      style="
+                        background: #e8f4f8;
+                        color: #0066cc;
+                        padding: 3px 8px;
+                        border-radius: 12px;
+                        font-size: 11px;
+                        font-weight: 500;
+                      "
+                      >Excel</span
+                    >
+                    <span
+                      style="
+                        background: #e8f4f8;
+                        color: #0066cc;
+                        padding: 3px 8px;
+                        border-radius: 12px;
+                        font-size: 11px;
+                        font-weight: 500;
+                      "
+                      >Process Documentation</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- About Section -->
     <section id="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>About Me</h2>
-            </div>
-            <div class="about-content">
-                <div class="about-img">
-                    <img src="/api/placeholder/400/320" alt="Anthony Suh">
-                </div>
-                <div class="about-text">
-                    <h3>Who am I?</h3>
-                    <p>I am a passionate web developer based in [Your Location]. With expertise in HTML, CSS, JavaScript, and various frameworks, I create responsive and user-friendly websites.</p>
-                    <p>My journey in web development started in [Year], and since then, I've worked on numerous projects that have helped me sharpen my skills and expand my knowledge.</p>
-                    <h3>My Skills</h3>
-                    <p>HTML5, CSS3, JavaScript, React, Node.js, UI/UX Design, Responsive Design</p>
-                    <h3>My Experience</h3>
-                    <p>I have worked with various clients and companies, delivering high-quality web solutions that meet their specific needs and requirements.</p>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-title">
+          <h2>About Me</h2>
         </div>
+
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+          "
+        >
+          <div style="text-align: center">
+            <img
+              src="./images/grad.jpg"
+              alt="Anthony Suh"
+              style="
+                width: 100%;
+                max-width: 300px;
+                border-radius: 15px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+              "
+            />
+          </div>
+
+          <div>
+            <h3 style="color: #0078ff; margin-bottom: 1rem">Who am I?</h3>
+            <p
+              style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem"
+            >
+              I am a
+              <span style="color: #0078ff; font-weight: bold"
+                >passionate web developer</span
+              >
+              based in Irvine, CA. I primarily program in JavaScript and Python,
+              with expertise in modern frameworks and cloud technologies.
+            </p>
+            <p
+              style="
+                font-size: 1rem;
+                line-height: 1.7;
+                margin-bottom: 2rem;
+                color: #666;
+              "
+            >
+              My journey in web development started in 2022, and since then,
+              I've worked on numerous projects that have helped me sharpen my
+              skills and expand my knowledge. I'm particularly interested in
+              full-stack development, machine learning applications, and
+              creating user-centric solutions.
+            </p>
+
+            <h3 style="color: #0078ff; margin-bottom: 1rem">
+              Technical Skills
+            </h3>
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+              "
+            >
+              <div>
+                <h4 style="margin-bottom: 0.5rem">Languages</h4>
+                <ul style="list-style: none; padding: 0">
+                  <li>• JavaScript / TypeScript</li>
+                  <li>• Python</li>
+                  <li>• Java</li>
+                  <li>• C++</li>
+                  <li>• HTML/CSS</li>
+                </ul>
+              </div>
+              <div>
+                <h4 style="margin-bottom: 0.5rem">Technologies</h4>
+                <ul style="list-style: none; padding: 0">
+                  <li>• React / Node.js</li>
+                  <li>• MongoDB / PostgreSQL</li>
+                  <li>• AWS (EC2, S3, Lightsail)</li>
+                  <li>• Git / Docker</li>
+                  <li>• PyTorch / TensorFlow</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" style="background-color: #f8f9fa;">
-        <div class="container">
-            <div class="section-title">
-                <h2>My Projects</h2>
-            </div>
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="/api/placeholder/300/200" alt="Project 1">
-                    </div>
-                    <div class="project-info">
-                        <h3>Project Name 1</h3>
-                        <p>A brief description of this project and the technologies used.</p>
-                        <a href="#" class="btn" style="padding: 8px 15px; font-size: 14px;">View Project</a>
-                    </div>
-                </div>
-                
-                <!-- Project 2 -->
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="/api/placeholder/300/200" alt="Project 2">
-                    </div>
-                    <div class="project-info">
-                        <h3>Project Name 2</h3>
-                        <p>A brief description of this project and the technologies used.</p>
-                        <a href="#" class="btn" style="padding: 8px 15px; font-size: 14px;">View Project</a>
-                    </div>
-                </div>
-                
-                <!-- Project 3 -->
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="/api/placeholder/300/200" alt="Project 3">
-                    </div>
-                    <div class="project-info">
-                        <h3>Project Name 3</h3>
-                        <p>A brief description of this project and the technologies used.</p>
-                        <a href="#" class="btn" style="padding: 8px 15px; font-size: 14px;">View Project</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section
+    <!-- Contact Section -->
     <section id="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Contact Me</h2>
-            </div>
-            <div class="contact-form">
-                <form>
-                    <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Your Email</label>
-                        <input type="email" id="email" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" class="form-control" required></textarea>
-                    </div>
-                    <button type="submit" class="btn" style="border: none; cursor: pointer;">Send Message</button>
-                </form>
-            </div>
+      <div class="container">
+        <div class="section-title">
+          <h2>Get In Touch</h2>
+          <p
+            style="
+              font-size: 1.1rem;
+              color: #666;
+              max-width: 600px;
+              margin: 0 auto;
+            "
+          >
+            I'm always open to discussing new opportunities, interesting
+            projects, or just having a chat about technology.
+          </p>
         </div>
-    </section> -->
+
+        <div class="contact-form">
+          <form>
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" class="form-control" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Your Email</label>
+              <input type="email" id="email" class="form-control" required />
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" class="form-control" required />
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                class="form-control"
+                required
+                placeholder="Tell me about your project or just say hello!"
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              class="btn"
+              style="border: none; cursor: pointer; width: 100%"
+            >
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/anthonysuh/">LinkedIn</a>
-                <a href="https://github.com/antsuh1028">GitHub</a>
-                <a href="https://www.instagram.com/anthonythesuh/">Instagram</a>
-            </div>
-            <p>&copy; 2025 Anthony Suh. All Rights Reserved.</p>
+      <div class="container">
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/anthonysuh/">LinkedIn</a>
+          <a href="https://github.com/antsuh1028">GitHub</a>
+          <a href="https://www.instagram.com/anthonythesuh/">Instagram</a>
         </div>
+        <p>&copy; 2025 Anthony Suh. All Rights Reserved.</p>
+        <p style="font-size: 0.9rem; color: #888; margin-top: 0.5rem">
+          Built with passion and lots of coffee ☕
+        </p>
+      </div>
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+      // Enhanced Typewriter Effect
+      const texts = [
+        "Full-Stack Developer",
+        "Software Engineer",
+        "Problem Solver",
+        "Tech Enthusiast",
+        "CS Student at UCI",
+      ];
+
+      let textIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      const typingSpeed = 100;
+      const deletingSpeed = 50;
+      const pauseDuration = 2000;
+
+      function typeWriter() {
+        const currentText = texts[textIndex];
+        const typingElement = document.getElementById("typing-text");
+
+        if (isDeleting) {
+          typingElement.textContent = currentText.substring(0, charIndex - 1);
+          charIndex--;
+
+          if (charIndex === 0) {
+            isDeleting = false;
+            textIndex = (textIndex + 1) % texts.length;
+            setTimeout(typeWriter, 500);
+            return;
+          }
+          setTimeout(typeWriter, deletingSpeed);
+        } else {
+          typingElement.textContent = currentText.substring(0, charIndex + 1);
+          charIndex++;
+
+          if (charIndex === currentText.length) {
+            isDeleting = true;
+            setTimeout(typeWriter, pauseDuration);
+            return;
+          }
+          setTimeout(typeWriter, typingSpeed);
+        }
+      }
+
+      // Start typewriter effect
+      document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(typeWriter, 1000);
+      });
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
             });
+          }
         });
+      });
+
+      // Scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.animationPlayState = "running";
+          }
+        });
+      }, observerOptions);
+
+      // Observe timeline items
+      document.querySelectorAll(".timeline-item").forEach((item, index) => {
+        item.style.animationDelay = `${index * 0.2}s`;
+        item.style.animationPlayState = "paused";
+        observer.observe(item);
+      });
+
+      // Header scroll effect
+      window.addEventListener("scroll", () => {
+        const header = document.querySelector("header");
+        if (window.scrollY > 100) {
+          header.style.background = "rgba(255, 255, 255, 0.98)";
+          header.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.1)";
+        } else {
+          header.style.background = "rgba(255, 255, 255, 0.95)";
+          header.style.boxShadow = "none";
+        }
+      });
+
+      // Form submission
+      document.querySelector("form").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        // Get form data
+        const formData = new FormData(this);
+        const name = formData.get("name");
+        const email = formData.get("email");
+        const subject = formData.get("subject");
+        const message = formData.get("message");
+
+        // Simple validation
+        if (!name || !email || !subject || !message) {
+          alert("Please fill in all fields");
+          return;
+        }
+
+        // Create mailto link
+        const mailtoLink = `mailto:ant.suh1028@gmail.com?subject=${encodeURIComponent(
+          subject
+        )}&body=${encodeURIComponent(
+          `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+        )}`;
+
+        // Open default email client
+        window.location.href = mailtoLink;
+
+        // Show success message
+        alert(
+          "Thank you for your message! Your default email client should open now."
+        );
+
+        // Reset form
+        this.reset();
+      });
+
+      // Add loading animation
+      window.addEventListener("load", () => {
+        document.body.style.opacity = "0";
+        document.body.style.transition = "opacity 0.5s ease-in-out";
+
+        setTimeout(() => {
+          document.body.style.opacity = "1";
+        }, 100);
+      });
+      // Header scroll effect
+      window.addEventListener("scroll", () => {
+        const header = document.querySelector("header");
+        if (window.scrollY > 100) {
+          header.classList.add("header-scrolled");
+        } else {
+          header.classList.remove("header-scrolled");
+        }
+      });
     </script>
-</body>
+  </body>
 </html>
