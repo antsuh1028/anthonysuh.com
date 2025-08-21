@@ -13,12 +13,158 @@
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         line-height: 1.6;
-        color: #333;
-        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:%23e6f3ff;stop-opacity:1" /><stop offset="70%" style="stop-color:%23b3e0ff;stop-opacity:1" /><stop offset="100%" style="stop-color:%2387ceeb;stop-opacity:1" /></linearGradient></defs><rect width="1200" height="800" fill="url(%23sky)"/><path d="M0,600 L200,400 L400,500 L600,300 L800,450 L1000,200 L1200,350 L1200,800 L0,800 Z" fill="%234a5568" opacity="0.8"/><path d="M0,650 L150,500 L350,550 L550,400 L750,500 L950,300 L1200,400 L1200,800 L0,800 Z" fill="%232d3748" opacity="0.6"/><path d="M0,700 L100,600 L300,650 L500,550 L700,600 L900,450 L1200,500 L1200,800 L0,800 Z" fill="%231a202c" opacity="0.4"/></svg>')
-          no-repeat center center fixed;
-        background-size: cover;
+        color: #f4f4f4;
+        background: linear-gradient(135deg, #2b2f38, #3a3f48);
+        background-attachment: fixed;
+        position: relative;
         overflow-x: hidden;
       }
+
+      /* Starry background */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(
+            2px 2px at 20px 30px,
+            rgba(255, 255, 255, 0.8),
+            transparent
+          ),
+          radial-gradient(
+            2px 2px at 40px 70px,
+            rgba(255, 255, 255, 0.6),
+            transparent
+          ),
+          radial-gradient(
+            1px 1px at 90px 40px,
+            rgba(255, 255, 255, 0.9),
+            transparent
+          ),
+          radial-gradient(
+            1px 1px at 130px 80px,
+            rgba(255, 255, 255, 0.4),
+            transparent
+          ),
+          radial-gradient(
+            2px 2px at 160px 30px,
+            rgba(255, 255, 255, 0.7),
+            transparent
+          ),
+          radial-gradient(
+            1px 1px at 200px 100px,
+            rgba(255, 255, 255, 0.5),
+            transparent
+          ),
+          radial-gradient(
+            2px 2px at 240px 50px,
+            rgba(255, 255, 255, 0.8),
+            transparent
+          ),
+          radial-gradient(
+            1px 1px at 280px 90px,
+            rgba(255, 255, 255, 0.6),
+            transparent
+          ),
+          radial-gradient(
+            1px 1px at 320px 20px,
+            rgba(255, 255, 255, 0.9),
+            transparent
+          ),
+          radial-gradient(
+            2px 2px at 360px 110px,
+            rgba(255, 255, 255, 0.4),
+            transparent
+          );
+        background-repeat: repeat;
+        background-size: 400px 150px;
+        z-index: -2;
+        animation: twinkle 4s ease-in-out infinite alternate;
+      }
+
+      body::after {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(
+            1px 1px at 50px 60px,
+            rgba(255, 255, 255, 0.3),
+            transparent
+          ),
+          radial-gradient(
+            2px 2px at 120px 10px,
+            rgba(255, 255, 255, 0.7),
+            transparent
+          ),
+          radial-gradient(
+            1px 1px at 180px 120px,
+            rgba(255, 255, 255, 0.5),
+            transparent
+          ),
+          radial-gradient(
+            1px 1px at 250px 40px,
+            rgba(255, 255, 255, 0.8),
+            transparent
+          ),
+          radial-gradient(
+            2px 2px at 300px 140px,
+            rgba(255, 255, 255, 0.4),
+            transparent
+          ),
+          radial-gradient(
+            1px 1px at 80px 100px,
+            rgba(255, 255, 255, 0.6),
+            transparent
+          );
+        background-repeat: repeat;
+        background-size: 380px 160px;
+        z-index: -1;
+        animation: twinkle 6s ease-in-out infinite alternate-reverse;
+      }
+
+      @keyframes twinkle {
+        0% {
+          opacity: 0.3;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      /* Cursor trail effect */
+      .trail-dot {
+        position: fixed;
+        width: 8px;
+        height: 8px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 234, 117, 0.8) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: -1;
+        transform: translate(-30%, -30%);
+        transition: opacity 0.4s ease;
+        box-shadow: 0 0 10px rgba(135, 206, 235, 0.5);
+      }
+
+      @keyframes pulse-shine {
+        0%,
+        100% {
+          transform: translate(-50%, -50%) scale(1);
+          opacity: 0.3;
+        }
+        50% {
+          transform: translate(-50%, -50%) scale(1.2);
+          opacity: 0.6;
+        }
+      }
+
       .container {
         /* max-width: 1200px; */
         /* margin: 0 auto;
@@ -153,7 +299,7 @@
       }
 
       .hero-text {
-        padding-left: 100px;
+        padding-left: 170px;
         animation: slideInLeft 1s ease-out;
       }
 
@@ -441,10 +587,6 @@
         position: relative;
       }
 
-      section:nth-child(even) {
-        background: #f8f9fa;
-      }
-
       .section-title {
         text-align: center;
         margin-bottom: 3rem;
@@ -533,7 +675,7 @@
         border: 4px solid white;
         top: 15px;
         border-radius: 50%;
-        z-index: 700; /* This was already there - keeps marker on top */
+        z-index: 700;
         cursor: pointer;
         transition: all 0.3s ease;
         box-shadow: 0 0 0 0 rgba(135, 206, 235, 0.4);
@@ -554,19 +696,22 @@
 
       .timeline-item-content {
         padding: 25px 30px;
-        background: white;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
         position: relative;
         border-radius: 15px;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         transition: all 0.3s ease;
         border-left: 5px solid #87ceeb;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #333;
       }
 
       .timeline-item:hover .timeline-item-content {
         transform: translateY(-10px);
         box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
       }
-      /* Timeline Dropdown Styles */
+
       .timeline-dropdown {
         cursor: pointer;
       }
@@ -605,6 +750,7 @@
         margin: 0;
         opacity: 0;
         transition: opacity 0.3s ease 0.1s;
+        color: #333;
       }
 
       .timeline-dropdown:hover .timeline-details {
@@ -613,19 +759,24 @@
 
       /* Project Cards */
       .projects-grid {
+        padding-left: 3%;
+        padding-right: 3%;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
         margin-top: 2rem;
       }
 
       .project-card {
-        background: white;
-        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 12px;
         overflow: hidden;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         transition: all 0.3s ease;
         position: relative;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        /* max-width: 320px; */
       }
 
       .project-card:hover {
@@ -662,6 +813,7 @@
 
       .project-info {
         padding: 1.5rem;
+        color: #333; /* Dark text for readability */
       }
 
       /* Contact Form */
@@ -858,7 +1010,10 @@
           </div>
 
           <div class="cta-buttons">
-            <a href="./documents/Anthony_Suh_New_Grad_Resume.pdf" class="btn"
+            <a
+              href="./documents/Anthony_Suh_New_Grad_Resume.pdf"
+              class="btn"
+              target="_blank"
               ><svg
                 viewBox="0 0 24 24"
                 width="16"
@@ -938,7 +1093,7 @@
             </div>
             <span
               style="
-                background: #0078ff;
+                background: #87ceeb;
                 color: white;
                 padding: 3px 8px;
                 border-radius: 4px;
@@ -1067,7 +1222,7 @@
             </div>
             <span
               style="
-                background: #0078ff;
+                background: #87ceeb;
                 color: white;
                 padding: 3px 8px;
                 border-radius: 4px;
@@ -1209,7 +1364,7 @@
             </div>
             <span
               style="
-                background: #0078ff;
+                background: #87ceeb;
                 color: white;
                 padding: 3px 8px;
                 border-radius: 4px;
@@ -2084,81 +2239,102 @@
 
         <div
           style="
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 3rem;
-            align-items: center;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem auto;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 1000px;
           "
         >
-          <div style="text-align: center">
-            <img
-              src="./images/grad.jpg"
-              alt="Anthony Suh"
-              style="
-                width: 100%;
-                max-width: 300px;
-                border-radius: 15px;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-              "
-            />
-          </div>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1fr 2fr;
+              gap: 3rem;
+              align-items: center;
+            "
+          >
+            <div style="text-align: center">
+              <img
+                src="./images/grad.jpg"
+                alt="Anthony Suh"
+                style="
+                  width: 100%;
+                  max-width: 300px;
+                  border-radius: 15px;
+                  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                "
+              />
+            </div>
 
-          <div>
-            <h3 style="color: #0078ff; margin-bottom: 1rem">Who am I?</h3>
-            <p
-              style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem"
-            >
-              I am a
-              <span style="color: #0078ff; font-weight: bold"
-                >passionate web developer</span
+            <div>
+              <h3 style="color: #0078ff; margin-bottom: 1rem">Who am I?</h3>
+              <p
+                style="
+                  font-size: 1.1rem;
+                  line-height: 1.8;
+                  margin-bottom: 1.5rem;
+                  color: #333;
+                "
               >
-              based in Irvine, CA. I primarily program in JavaScript and Python,
-              with expertise in modern frameworks and cloud technologies.
-            </p>
-            <p
-              style="
-                font-size: 1rem;
-                line-height: 1.7;
-                margin-bottom: 2rem;
-                color: #666;
-              "
-            >
-              My journey in web development started in 2022, and since then,
-              I've worked on numerous projects that have helped me sharpen my
-              skills and expand my knowledge. I'm particularly interested in
-              full-stack development, machine learning applications, and
-              creating user-centric solutions.
-            </p>
+                I am a
+                <span style="color: #0078ff; font-weight: bold"
+                  >passionate web developer</span
+                >
+                based in Irvine, CA. I primarily program in JavaScript and
+                Python, with expertise in modern frameworks and cloud
+                technologies.
+              </p>
+              <p
+                style="
+                  font-size: 1rem;
+                  line-height: 1.7;
+                  margin-bottom: 2rem;
+                  color: #333;
+                "
+              >
+                My journey in web development started in 2022, and since then,
+                I've worked on numerous projects that have helped me sharpen my
+                skills and expand my knowledge. I'm particularly interested in
+                full-stack development, machine learning applications, and
+                creating user-centric solutions.
+              </p>
 
-            <h3 style="color: #0078ff; margin-bottom: 1rem">
-              Technical Skills
-            </h3>
-            <div
-              style="
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-              "
-            >
-              <div>
-                <h4 style="margin-bottom: 0.5rem">Languages</h4>
-                <ul style="list-style: none; padding: 0">
-                  <li>• JavaScript / TypeScript</li>
-                  <li>• Python</li>
-                  <li>• Java</li>
-                  <li>• C++</li>
-                  <li>• HTML/CSS</li>
-                </ul>
-              </div>
-              <div>
-                <h4 style="margin-bottom: 0.5rem">Technologies</h4>
-                <ul style="list-style: none; padding: 0">
-                  <li>• React / Node.js</li>
-                  <li>• MongoDB / PostgreSQL</li>
-                  <li>• AWS (EC2, S3, Lightsail)</li>
-                  <li>• Git / Docker</li>
-                  <li>• PyTorch / TensorFlow</li>
-                </ul>
+              <h3 style="color: #0078ff; margin-bottom: 1rem">
+                Technical Skills
+              </h3>
+              <div
+                style="
+                  display: grid;
+                  grid-template-columns: repeat(2, 1fr);
+                  gap: 1rem;
+                "
+              >
+                <div>
+                  <h4 style="margin-bottom: 0.5rem; color: #333">Languages</h4>
+                  <ul style="list-style: none; padding: 0; color: #333">
+                    <li>• JavaScript / TypeScript</li>
+                    <li>• Python</li>
+                    <li>• Java</li>
+                    <li>• C++</li>
+                    <li>• HTML/CSS</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 style="margin-bottom: 0.5rem; color: #333">
+                    Technologies
+                  </h4>
+                  <ul style="list-style: none; padding: 0; color: #333">
+                    <li>• React / Node.js</li>
+                    <li>• MongoDB / PostgreSQL</li>
+                    <li>• AWS (EC2, S3, Lightsail)</li>
+                    <li>• Git / Docker</li>
+                    <li>• PyTorch / TensorFlow</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -2174,47 +2350,51 @@
           <p
             style="
               font-size: 1.1rem;
-              color: #666;
+              color: #ffffff;
               max-width: 600px;
               margin: 0 auto;
+              margin-top: 2rem;
             "
           >
-            I'm always open to discussing new opportunities, interesting
-            projects, or just having a chat about technology.
+            I'm always open to discussing new opportunities, feel free to reach
+            out!
           </p>
         </div>
 
-        <div class="contact-form">
-          <form>
-            <div class="form-group">
-              <label for="name">Your Name</label>
-              <input type="text" id="name" class="form-control" required />
-            </div>
-            <div class="form-group">
-              <label for="email">Your Email</label>
-              <input type="email" id="email" class="form-control" required />
-            </div>
-            <div class="form-group">
-              <label for="subject">Subject</label>
-              <input type="text" id="subject" class="form-control" required />
-            </div>
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea
-                id="message"
-                class="form-control"
-                required
-                placeholder="Tell me about your project or just say hello!"
-              ></textarea>
-            </div>
-            <button
-              type="submit"
-              class="btn"
-              style="border: none; cursor: pointer; width: 100%"
+        <div style="text-align: center; margin-top: 2rem">
+          <a
+            href="mailto:ant.suh1028@gmail.com"
+            class="btn"
+            style="
+              display: inline-block;
+              padding: 15px 40px;
+              border-radius: 30px;
+              text-decoration: none;
+              font-weight: bold;
+              background: #87ceeb;
+              color: white;
+              box-shadow: 0 5px 15px rgba(135, 206, 235, 0.3);
+              transition: all 0.3s ease;
+              border: none;
+              cursor: pointer;
+              font-size: 1.1rem;
+            "
+            onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 10px 25px rgba(135, 206, 235, 0.4)'; this.style.background='#5dade2'"
+            onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 15px rgba(135, 206, 235, 0.3)'; this.style.background='#87ceeb'"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+              style="margin-right: 10px; vertical-align: middle"
             >
-              Send Message
-            </button>
-          </form>
+              <path
+                fill="currentColor"
+                d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"
+              />
+            </svg>
+            Send me an email
+          </a>
         </div>
       </div>
     </section>
@@ -2228,9 +2408,6 @@
           <a href="https://www.instagram.com/anthonythesuh/">Instagram</a>
         </div>
         <p>&copy; 2025 Anthony Suh. All Rights Reserved.</p>
-        <p style="font-size: 0.9rem; color: #888; margin-top: 0.5rem">
-          Built with passion and lots of coffee ☕
-        </p>
       </div>
     </footer>
 
@@ -2282,6 +2459,39 @@
       // Start typewriter effect
       document.addEventListener("DOMContentLoaded", function () {
         setTimeout(typeWriter, 1000);
+
+        // Cursor trail effect
+        const trail = [];
+        const maxTrailLength = 20;
+
+        function createTrailDot(x, y) {
+          const dot = document.createElement("div");
+          dot.className = "trail-dot";
+          dot.style.left = x + "px";
+          dot.style.top = y + "px";
+          document.body.appendChild(dot);
+
+          trail.push(dot);
+
+          if (trail.length > maxTrailLength) {
+            const oldDot = trail.shift();
+            oldDot.remove();
+          }
+
+          // Fade out the dot
+          setTimeout(() => {
+            dot.style.opacity = "0";
+            setTimeout(() => {
+              if (dot.parentNode) {
+                dot.remove();
+              }
+            }, 300);
+          }, 100);
+        }
+
+        document.addEventListener("mousemove", (e) => {
+          createTrailDot(e.clientX, e.clientY);
+        });
       });
 
       // Smooth scrolling for navigation links
@@ -2376,6 +2586,7 @@
           document.body.style.opacity = "1";
         }, 100);
       });
+
       // Header scroll effect
       window.addEventListener("scroll", () => {
         const header = document.querySelector("header");
