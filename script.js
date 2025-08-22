@@ -250,6 +250,27 @@ function setupParticles() {
       }
     }
   });
+  // Create cursor shine element
+const cursorShine = document.createElement('div');
+cursorShine.className = 'cursor-shine';
+document.body.appendChild(cursorShine);
+
+// Track mouse movement
+document.addEventListener('mousemove', (e) => {
+    cursorShine.style.left = e.clientX + 'px';
+    cursorShine.style.top = e.clientY + 'px';
+    cursorShine.style.opacity = '1';
+});
+
+// Hide when mouse leaves the window
+document.addEventListener('mouseleave', () => {
+    cursorShine.style.opacity = '0';
+});
+
+// Show when mouse enters the window
+document.addEventListener('mouseenter', () => {
+    cursorShine.style.opacity = '1';
+});
 
   // Start animation
   init();
