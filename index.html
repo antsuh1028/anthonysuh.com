@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="icon" type="image/png" href="/as.png" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Anthony Suh - Portfolio</title>
+
     <style>
       * {
         margin: 0;
@@ -197,7 +199,6 @@
         justify-content: center;
         align-items: center;
         padding: 1.2rem 0;
-        /* width: 100px; */
         max-width: 1200px;
         margin: 0 auto;
         position: relative;
@@ -252,6 +253,13 @@
         background: rgba(135, 206, 235, 0.15);
       }
 
+      /* Hide header on mobile */
+      @media (max-width: 768px) {
+        header {
+          display: none;
+        }
+      }
+
       .hero {
         min-height: 100vh;
         display: flex;
@@ -260,19 +268,6 @@
         overflow: hidden;
         background: transparent !important;
       }
-
-      /* Floating Background Elements */
-      /* .hero::before {
-        content: "";
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-        animation: float 20s ease-in-out infinite;
-        z-index: -1;
-      } */
 
       @keyframes float {
         0%,
@@ -285,17 +280,17 @@
       }
 
       .hero-content {
-        padding-left: 100px;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 4rem clamp(2rem, 12vw, 20rem); /* Increased max padding */
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 2fr 1fr;
         gap: 4rem;
         align-items: center;
-        /* Remove or comment out this line: */
-        /* background: rgba(0, 204, 255, 0.1); */
       }
 
       .hero-text {
-        padding-left: 30%;
+        /* padding-left: 30%; */
         animation: slideInLeft 1s ease-out;
       }
 
@@ -427,6 +422,61 @@
         }
       }
 
+      .tech-badges-with-logos {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 1.5rem;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .tech-badge-logo {
+        background: rgba(255, 255, 255, 0.8);
+        border: 2px solid rgba(135, 206, 235, 0.3);
+        border-radius: 15px;
+        padding: 1.5rem 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .tech-badge-logo:hover {
+        transform: translateY(-5px);
+        border-color: #87ceeb;
+        box-shadow: 0 10px 25px rgba(135, 206, 235, 0.2);
+      }
+
+      .tech-badge-logo img {
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+      }
+
+      .tech-badge-logo span {
+        font-weight: 600;
+        color: #333;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        .tech-badges-with-logos {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1rem;
+        }
+
+        .tech-badge-logo {
+          padding: 1rem 0.5rem;
+        }
+
+        .tech-badge-logo img {
+          width: 30px;
+          height: 30px;
+        }
+      }
+
       /* Social Links with Hover Effects */
       .hero-social-links {
         display: flex;
@@ -458,6 +508,7 @@
       .cta-buttons {
         display: flex;
         gap: 1rem;
+        margin-bottom: 2rem; /* Add this line to adjust bottom margin */
       }
 
       .btn {
@@ -520,26 +571,33 @@
         animation: slideInRight 1s ease-out;
       }
 
-      @keyframes slideInRight {
-        from {
-          opacity: 0;
-          transform: translateX(50px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
       .hero-img img {
         margin-left: 100px;
         width: 100%;
-        max-width: 300px; /* Even smaller */
+        max-width: 300px;
         border-radius: 20px;
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         transition: transform 0.3s ease;
       }
 
+      @media (max-width: 768px) {
+        .hero-content {
+          grid-template-columns: 1fr; /* Change to single column */
+          text-align: center;
+          gap: 2rem;
+        }
+
+        .hero-img {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+        }
+
+        .hero-img img {
+          margin-left: 0; /* Remove the desktop left margin */
+        }
+      }
       /* .hero-img:hover img {
         transform: scale(1.05) rotateY(5deg);
       } */
@@ -613,6 +671,19 @@
         max-width: 1200px;
         margin: 0 auto;
       }
+      .timeline-line {
+        position: absolute;
+        width: 6px;
+        background: linear-gradient(180deg, #87ceeb, #b3e0ff);
+        top: 0;
+        left: 20px;
+        margin-left: -3px;
+        border-radius: 3px;
+        z-index: -1;
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: transform 0.1s ease-out;
+      }
 
       .timeline::after {
         content: "";
@@ -646,10 +717,6 @@
         margin-bottom: 30px;
         opacity: 0;
         animation: slideInFromLeft 0.6s ease-out forwards;
-      }
-
-      .timeline-item:nth-child(even) {
-        animation: slideInFromRight 0.6s ease-out forwards;
       }
 
       @keyframes slideInFromLeft {
@@ -1050,69 +1117,68 @@
           </div>
 
           <p>
-            Currently a Computer Science student at the University of
-            California, Irvine, passionate about creating innovative web
-            solutions and bringing ideas to life through code.
+            IM'm a student at University of California, Irvine and aspiring
+            software engineer who loves building things that actually solve real
+            problems and make people's daily lives a little easier.
           </p>
-
-          <div class="tech-badges">
-            <div class="tech-badge">React</div>
-            <div class="tech-badge">JavaScript</div>
-            <div class="tech-badge">Python</div>
-            <div class="tech-badge">MongoDB</div>
-            <div class="tech-badge">AWS</div>
-          </div>
-
-          <div class="hero-social-links">
-            <a href="https://www.linkedin.com/in/anthonysuh/" title="LinkedIn">
-              <svg viewBox="0 0 24 24" width="20" height="20">
-                <path
-                  fill="currentColor"
-                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
-                />
-              </svg>
-            </a>
-            <a href="https://github.com/antsuh1028" title="GitHub">
-              <svg viewBox="0 0 24 24" width="20" height="20">
-                <path
-                  fill="currentColor"
-                  d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
-                />
-              </svg>
-            </a>
-            <a
-              href="https://www.instagram.com/anthonythesuh/"
-              title="Instagram"
-            >
-              <svg viewBox="0 0 24 24" width="20" height="20">
-                <path
-                  fill="currentColor"
-                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
-                />
-              </svg>
-            </a>
-          </div>
-
-          <div class="cta-buttons">
-            <a
-              href="./documents/Anthony_Suh_New_Grad_Resume.pdf"
-              class="btn"
-              target="_blank"
-              ><svg
-                viewBox="0 0 24 24"
-                width="16"
-                height="16"
-                style="margin-right: 5px"
+          <div style="display: flex; align-items: center; gap: 2rem">
+            <div class="hero-social-links">
+              <a
+                href="https://www.linkedin.com/in/anthonysuh/"
+                title="LinkedIn"
+                target="_blank"
               >
-                <path
-                  fill="currentColor"
-                  d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"
-                />
-              </svg>
-              Resume</a
-            >
-
-            <a href="#contact" class="btn btn-outline">Contact Me</a>
+                <svg viewBox="0 0 24 24" width="20" height="20">
+                  <path
+                    fill="currentColor"
+                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="https://github.com/antsuh1028"
+                title="GitHub"
+                target="_blank"
+              >
+                <svg viewBox="0 0 24 24" width="20" height="20">
+                  <path
+                    fill="currentColor"
+                    d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+                  />
+                </svg>
+              </a>
+              <a
+                href="https://www.instagram.com/anthonythesuh/"
+                title="Instagram"
+                target="_blank"
+              >
+                <svg viewBox="0 0 24 24" width="20" height="20">
+                  <path
+                    fill="currentColor"
+                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
+                  />
+                </svg>
+              </a>
+            </div>
+            <div class="cta-buttons">
+              <a
+                href="./documents/Anthony_Suh_New_Grad_Resume.pdf"
+                class="btn"
+                target="_blank"
+                ><svg
+                  viewBox="0 0 24 24"
+                  width="16"
+                  height="16"
+                  style="margin-right: 5px"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"
+                  />
+                </svg>
+                Resume</a
+              >
+            </div>
           </div>
         </div>
 
@@ -1131,6 +1197,7 @@
 
         <div class="timeline">
           <!-- Latest Experience Item -->
+          <div class="timeline-line"></div>
           <div class="timeline-item">
             <div class="timeline-marker"></div>
             <div class="timeline-item-content timeline-dropdown">
@@ -1149,6 +1216,36 @@
                     alt="AdamsFoods Logo"
                     style="height: 24px; width: auto"
                   />
+                  <a
+                    href="https://adamsfoodswholesale.com"
+                    target="_blank"
+                    style="
+                      background: #333;
+                      color: white;
+                      padding: 4px 8px;
+                      border-radius: 12px;
+                      font-size: 11px;
+                      text-decoration: none;
+                      display: flex;
+                      align-items: center;
+                      gap: 4px;
+                      transition: all 0.3s ease;
+                    "
+                    onmouseover="this.style.background='#0078ff'"
+                    onmouseout="this.style.background='#333'"
+                  >
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path
+                        d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z"
+                      />
+                    </svg>
+                    Website
+                  </a>
                 </div>
 
                 <div
@@ -1336,6 +1433,28 @@
                         "
                         >AWS S3</span
                       >
+                      <span
+                        style="
+                          background: #e8f4f8;
+                          color: #0066cc;
+                          padding: 3px 8px;
+                          border-radius: 12px;
+                          font-size: 11px;
+                          font-weight: 500;
+                        "
+                        >AWS Lightsail</span
+                      >
+                      <span
+                        style="
+                          background: #e8f4f8;
+                          color: #0066cc;
+                          padding: 3px 8px;
+                          border-radius: 12px;
+                          font-size: 11px;
+                          font-weight: 500;
+                        "
+                        >Express</span
+                      >
                     </div>
                   </div>
                   <div style="flex-shrink: 0">
@@ -1374,12 +1493,290 @@
                     margin-bottom: 10px;
                   "
                 >
+                  <h3>Full-Stack Developer</h3>
+                  <img
+                    src="./images/ctc.png"
+                    alt="CTC Logo"
+                    style="
+                      height: 48px;
+                      width: 48px;
+                      border-radius: 50%;
+                      object-fit: cover;
+                    "
+                  />
+                  <a
+                    href="https://github.com/ctc-uci/lpa"
+                    target="_blank"
+                    style="
+                      background: #333;
+                      color: white;
+                      padding: 4px 8px;
+                      border-radius: 12px;
+                      font-size: 11px;
+                      text-decoration: none;
+                      display: flex;
+                      align-items: center;
+                      gap: 4px;
+                      transition: all 0.3s ease;
+                    "
+                    onmouseover="this.style.background='#0078ff'"
+                    onmouseout="this.style.background='#333'"
+                  >
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path
+                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                      />
+                    </svg>
+                    GitHub
+                  </a>
+                </div>
+
+                <div
+                  style="
+                    background: #f0f8ff;
+                    color: #333;
+                    padding: 6px 12px;
+                    border-radius: 8px;
+                    font-size: 13px;
+                    font-weight: 500;
+                    display: inline-block;
+                    margin: 4px 0;
+                    border: 1px solid #d0e8ff;
+                  "
+                >
+                  Commit the Change @ UCI - La Peña Cultural Center
+                </div>
+
+                <div
+                  style="
+                    background: #e6f3ff;
+                    color: #0078ff;
+                    padding: 6px 12px;
+                    border-radius: 8px;
+                    font-size: 13px;
+                    font-weight: 500;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 5px;
+                    margin-left: 10px;
+                    border: 1px solid #b3e0ff;
+                  "
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M19,5V7H5V5H19M5,19V9H19V19H5Z"
+                    />
+                  </svg>
+                  October 2024 - Present
+                </div>
+
+                <div
+                  style="
+                    background: #f5f5f5;
+                    color: #666;
+                    padding: 6px 12px;
+                    border-radius: 8px;
+                    font-size: 13px;
+                    font-weight: 500;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 5px;
+                    margin-left: 10px;
+                    border: 1px solid #ddd;
+                  "
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z"
+                    />
+                  </svg>
+                  Irvine, CA
+                </div>
+
+                <div class="dropdown-arrow">▼</div>
+              </div>
+              <div class="timeline-details-dropdown">
+                <div style="display: flex; gap: 20px; align-items: flex-start">
+                  <div style="flex: 1">
+                    <p
+                      style="
+                        margin-bottom: 15px;
+                        font-size: 14px;
+                        color: #333;
+                        line-height: 1.6;
+                      "
+                    >
+                      At Commit the Change, I worked on a project for La Peña
+                      Cultural Center, a nonprofit organization that builds
+                      community through cultural events and art workshops in the
+                      Bay Area. A hardship they were facing was with scheduling
+                      and managing room bookings, which was all done through
+                      paper forms and word of mouth. I worked with a team of 15
+                      to build a full-stack web application that digitized their
+                      entire administrative workflow, from room bookings and
+                      class registration to invoice processing and client
+                      communication. Our React frontend and Node.js/Express
+                      backend reduced manual processing time by 60% while
+                      managing over 50 monthly bookings. The optimized invoice
+                      calculation logic alone saved them roughly 10 hours of
+                      manual work each month, letting them focus more on serving
+                      their community.
+                    </p>
+
+                    <ul class="timeline-details" style="margin: 0 0 15px 0">
+                      <li>
+                        Contributed to full-stack development in a
+                        <strong>15-person</strong> team for nonprofit cultural
+                        center platform using React, Node.js, Express, and
+                        PostgreSQL
+                      </li>
+                      <li>
+                        Led migration from paper-based to digital storage and
+                        streamlined class scheduling by
+                        <strong>50%</strong> through automated calendar and
+                        registration features for <strong>20+</strong> weekly
+                        cultural classes
+                      </li>
+                    </ul>
+
+                    <!-- Tech Stack -->
+                    <div
+                      style="
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 5px;
+                        margin-top: 10px;
+                      "
+                    >
+                      <span
+                        style="
+                          background: #e8f4f8;
+                          color: #0066cc;
+                          padding: 3px 8px;
+                          border-radius: 12px;
+                          font-size: 11px;
+                          font-weight: 500;
+                        "
+                        >React</span
+                      >
+                      <span
+                        style="
+                          background: #e8f4f8;
+                          color: #0066cc;
+                          padding: 3px 8px;
+                          border-radius: 12px;
+                          font-size: 11px;
+                          font-weight: 500;
+                        "
+                        >Node.js</span
+                      >
+                      <span
+                        style="
+                          background: #e8f4f8;
+                          color: #0066cc;
+                          padding: 3px 8px;
+                          border-radius: 12px;
+                          font-size: 11px;
+                          font-weight: 500;
+                        "
+                        >Express</span
+                      >
+                      <span
+                        style="
+                          background: #e8f4f8;
+                          color: #0066cc;
+                          padding: 3px 8px;
+                          border-radius: 12px;
+                          font-size: 11px;
+                          font-weight: 500;
+                        "
+                        >PostgreSQL</span
+                      >
+                    </div>
+                  </div>
+                  <div style="flex-shrink: 0">
+                    <img
+                      src="./images/ctc_laptop.png"
+                      alt="CTC Application"
+                      style="
+                        width: 400px;
+                        height: auto;
+                        border-radius: 8px;
+                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                        border: 1px solid rgba(135, 206, 235, 0.3);
+                        transition: transform 0.3s ease;
+                      "
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Experience Item 2 -->
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-item-content timeline-dropdown">
+              <div class="timeline-header">
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-bottom: 10px;
+                  "
+                >
                   <h3>Software Development Intern</h3>
                   <img
                     src="./images/main_logo.png"
                     alt="AdamsFoods Logo"
                     style="height: 24px; width: auto"
                   />
+                  <a
+                    href="https://github.com/antsuh1028/AdamsFoodsInventory"
+                    target="_blank"
+                    style="
+                      background: #333;
+                      color: white;
+                      padding: 4px 8px;
+                      border-radius: 12px;
+                      font-size: 11px;
+                      text-decoration: none;
+                      display: flex;
+                      align-items: center;
+                      gap: 4px;
+                      transition: all 0.3s ease;
+                    "
+                    onmouseover="this.style.background='#0078ff'"
+                    onmouseout="this.style.background='#333'"
+                  >
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path
+                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                      />
+                    </svg>
+                    GitHub
+                  </a>
                 </div>
 
                 <div
@@ -1595,229 +1992,6 @@
             </div>
           </div>
 
-          <!-- Experience Item 2 -->
-          <div class="timeline-item">
-            <div class="timeline-marker"></div>
-            <div class="timeline-item-content timeline-dropdown">
-              <div class="timeline-header">
-                <div
-                  style="
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
-                    margin-bottom: 10px;
-                  "
-                >
-                  <h3>Full-Stack Developer</h3>
-                  <img
-                    src="./images/ctc.png"
-                    alt="CTC Logo"
-                    style="
-                      height: 24px;
-                      width: 24px;
-                      border-radius: 50%;
-                      object-fit: cover;
-                    "
-                  />
-                  <a
-                    href="https://github.com/ctc-uci/lpa"
-                    target="_blank"
-                    style="
-                      background: #333;
-                      color: white;
-                      padding: 4px 8px;
-                      border-radius: 12px;
-                      font-size: 11px;
-                      text-decoration: none;
-                      display: flex;
-                      align-items: center;
-                      gap: 4px;
-                      transition: all 0.3s ease;
-                    "
-                    onmouseover="this.style.background='#0078ff'"
-                    onmouseout="this.style.background='#333'"
-                  >
-                    <svg
-                      width="12"
-                      height="12"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                    >
-                      <path
-                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-                      />
-                    </svg>
-                    GitHub
-                  </a>
-                </div>
-
-                <div
-                  style="
-                    background: #f0f8ff;
-                    color: #333;
-                    padding: 6px 12px;
-                    border-radius: 8px;
-                    font-size: 13px;
-                    font-weight: 500;
-                    display: inline-block;
-                    margin: 4px 0;
-                    border: 1px solid #d0e8ff;
-                  "
-                >
-                  Commit the Change @ UCI - La Peña Cultural Center
-                </div>
-
-                <div
-                  style="
-                    background: #e6f3ff;
-                    color: #0078ff;
-                    padding: 6px 12px;
-                    border-radius: 8px;
-                    font-size: 13px;
-                    font-weight: 500;
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 5px;
-                    margin-left: 10px;
-                    border: 1px solid #b3e0ff;
-                  "
-                >
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path
-                      d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M19,5V7H5V5H19M5,19V9H19V19H5Z"
-                    />
-                  </svg>
-                  June 2024 - Present
-                </div>
-
-                <div
-                  style="
-                    background: #f5f5f5;
-                    color: #666;
-                    padding: 6px 12px;
-                    border-radius: 8px;
-                    font-size: 13px;
-                    font-weight: 500;
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 5px;
-                    margin-left: 10px;
-                    border: 1px solid #ddd;
-                  "
-                >
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path
-                      d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z"
-                    />
-                  </svg>
-                  Irvine, CA
-                </div>
-
-                <div class="dropdown-arrow">▼</div>
-              </div>
-              <div class="timeline-details-dropdown">
-                <div style="display: flex; gap: 20px; align-items: flex-start">
-                  <div style="flex: 1">
-                    <ul class="timeline-details" style="margin: 0 0 15px 0">
-                      <li>
-                        Contributed to full-stack development in a
-                        <strong>15-person</strong> team for nonprofit cultural
-                        center platform using React, Node.js, Express, and
-                        PostgreSQL
-                      </li>
-                      <li>
-                        Led migration from paper-based to digital information
-                        storage and streamlined class scheduling by
-                        <strong>50%</strong> through automated calendar and
-                        registration features for <strong>20+</strong> weekly
-                        cultural classes
-                      </li>
-                    </ul>
-
-                    <!-- Tech Stack -->
-                    <div
-                      style="
-                        display: flex;
-                        flex-wrap: wrap;
-                        gap: 5px;
-                        margin-top: 10px;
-                      "
-                    >
-                      <span
-                        style="
-                          background: #e8f4f8;
-                          color: #0066cc;
-                          padding: 3px 8px;
-                          border-radius: 12px;
-                          font-size: 11px;
-                          font-weight: 500;
-                        "
-                        >React</span
-                      >
-                      <span
-                        style="
-                          background: #e8f4f8;
-                          color: #0066cc;
-                          padding: 3px 8px;
-                          border-radius: 12px;
-                          font-size: 11px;
-                          font-weight: 500;
-                        "
-                        >Node.js</span
-                      >
-                      <span
-                        style="
-                          background: #e8f4f8;
-                          color: #0066cc;
-                          padding: 3px 8px;
-                          border-radius: 12px;
-                          font-size: 11px;
-                          font-weight: 500;
-                        "
-                        >Express</span
-                      >
-                      <span
-                        style="
-                          background: #e8f4f8;
-                          color: #0066cc;
-                          padding: 3px 8px;
-                          border-radius: 12px;
-                          font-size: 11px;
-                          font-weight: 500;
-                        "
-                        >PostgreSQL</span
-                      >
-                    </div>
-                  </div>
-                  <div style="flex-shrink: 0">
-                    <img
-                      src="./images/ctc_laptop.png"
-                      alt="CTC Application"
-                      style="
-                        width: 400px;
-                        height: auto;
-                        border-radius: 8px;
-                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-                        border: 1px solid rgba(135, 206, 235, 0.3);
-                        transition: transform 0.3s ease;
-                      "
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
           <!-- Experience Item 3 -->
           <div class="timeline-item">
             <div class="timeline-marker"></div>
@@ -1915,6 +2089,28 @@
               </div>
               <div class="timeline-details-dropdown">
                 <div style="flex: 1">
+                  <p
+                    style="
+                      margin-bottom: 15px;
+                      font-size: 14px;
+                      color: #333;
+                      line-height: 1.6;
+                    "
+                  >
+                    Although this wasn't a tech role, it gave me valuable
+                    insight into how businesses operate and the real-world
+                    problems that technology can solve. Working directly in
+                    AdamsFoods' warehouse operations, I got to see firsthand how
+                    inefficient manual processes can slow down an entire supply
+                    chain. This experience taught me to think beyond just
+                    writing code - understanding the business context and user
+                    pain points became just as important as the technical
+                    implementation. It also sparked my interest in building
+                    systems that could automate these tedious manual workflows,
+                    which directly influenced my approach in later software
+                    development projects.
+                  </p>
+
                   <ul class="timeline-details" style="margin: 0 0 15px 0">
                     <li>
                       Optimized inventory management processes by digitizing
@@ -1970,7 +2166,7 @@
 
     <!-- Projects Section -->
     <div id="projects" class="section-title" style="margin-top: 80px">
-      <h2>Featured Projects</h2>
+      <h2>Projects</h2>
     </div>
 
     <div class="projects-grid">
@@ -2322,6 +2518,7 @@
               style="
                 flex: 1;
                 height: 100%;
+                width: 50%;
                 object-fit: contain;
                 background: #f5f5f5;
                 cursor: pointer;
@@ -2334,6 +2531,7 @@
               style="
                 flex: 1;
                 height: 100%;
+                width: 50%;
                 object-fit: contain;
                 background: #f5f5f5;
                 cursor: pointer;
@@ -2471,7 +2669,7 @@
     <section id="about">
       <div class="container">
         <div class="section-title">
-          <h2>About Me</h2>
+          <h2>Skills & Technologies</h2>
         </div>
 
         <div
@@ -2479,100 +2677,154 @@
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border-radius: 15px;
-            padding: 2rem;
+            padding: 3rem;
             margin: 2rem auto;
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             max-width: 1000px;
+            text-align: center;
           "
         >
-          <div
-            style="
-              display: grid;
-              grid-template-columns: 1fr 2fr;
-              gap: 3rem;
-              align-items: center;
-            "
-          >
-            <div style="text-align: center">
+          <p style="font-size: 1.2rem; color: #666; margin-bottom: 3rem">
+            Technologies I've learned and used in projects, coursework, and
+            professional work:
+          </p>
+
+          <div class="tech-badges-with-logos">
+            <div class="tech-badge-logo">
               <img
-                src="./images/grad.jpg"
-                alt="Anthony Suh"
-                style="
-                  width: 100%;
-                  max-width: 300px;
-                  border-radius: 15px;
-                  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-                "
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                alt="Python"
               />
+              <span>Python</span>
+            </div>
+            <div class="tech-badge-logo">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                alt="JavaScript"
+              />
+              <span>JavaScript</span>
+            </div>
+            <div class="tech-badge-logo">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+                alt="TypeScript"
+              />
+              <span>TypeScript</span>
+            </div>
+            <div class="tech-badge-logo">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"
+                alt="C++"
+              />
+              <span>C/C++</span>
+            </div>
+            <div class="tech-badge-logo">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+                alt="HTML/CSS"
+              />
+              <span>HTML/CSS</span>
             </div>
 
-            <div>
-              <h3 style="color: #0078ff; margin-bottom: 1rem">Who am I?</h3>
-              <p
-                style="
-                  font-size: 1.1rem;
-                  line-height: 1.8;
-                  margin-bottom: 1.5rem;
-                  color: #333;
-                "
-              >
-                I am a
-                <span style="color: #0078ff; font-weight: bold"
-                  >passionate web developer</span
-                >
-                based in Irvine, CA. I primarily program in JavaScript and
-                Python, with expertise in modern frameworks and cloud
-                technologies.
-              </p>
-              <p
-                style="
-                  font-size: 1rem;
-                  line-height: 1.7;
-                  margin-bottom: 2rem;
-                  color: #333;
-                "
-              >
-                My journey in web development started in 2022, and since then,
-                I've worked on numerous projects that have helped me sharpen my
-                skills and expand my knowledge. I'm particularly interested in
-                full-stack development, machine learning applications, and
-                creating user-centric solutions.
-              </p>
+            <div class="tech-badge-logo">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+                alt="React"
+              />
+              <span>React</span>
+            </div>
+            <div class="tech-badge-logo">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+                alt="Node.js"
+              />
+              <span>Node.js</span>
+            </div>
+            <div class="tech-badge-logo">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
+                alt="MongoDB"
+              />
+              <span>MongoDB</span>
+            </div>
+            <div class="tech-badge-logo">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
+                alt="PostgreSQL"
+              />
+              <span>PostgreSQL</span>
+            </div>
+            <div class="tech-badge-logo">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg"
+                alt="AWS"
+              />
+              <span>AWS</span>
+            </div>
+            <div class="tech-badge-logo">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
+                alt="Express"
+              />
+              <span>Express</span>
+            </div>
+            <div class="tech-badge-logo">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+                alt="React Native"
+              />
+              <span>React Native</span>
+            </div>
+            <div class="tech-badge-logo">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
+                alt="Firebase"
+              />
+              <span>Firebase</span>
+            </div>
+            <div class="tech-badge-logo">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+                alt="Git"
+              />
+              <span>Git</span>
+            </div>
 
-              <h3 style="color: #0078ff; margin-bottom: 1rem">
-                Technical Skills
-              </h3>
-              <div
-                style="
-                  display: grid;
-                  grid-template-columns: repeat(2, 1fr);
-                  gap: 1rem;
-                "
-              >
-                <div>
-                  <h4 style="margin-bottom: 0.5rem; color: #333">Languages</h4>
-                  <ul style="list-style: none; padding: 0; color: #333">
-                    <li>• JavaScript / TypeScript</li>
-                    <li>• Python</li>
-                    <li>• Java</li>
-                    <li>• C++</li>
-                    <li>• HTML/CSS</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 style="margin-bottom: 0.5rem; color: #333">
-                    Technologies
-                  </h4>
-                  <ul style="list-style: none; padding: 0; color: #333">
-                    <li>• React / Node.js</li>
-                    <li>• MongoDB / PostgreSQL</li>
-                    <li>• AWS (EC2, S3, Lightsail)</li>
-                    <li>• Git / Docker</li>
-                    <li>• PyTorch / TensorFlow</li>
-                  </ul>
-                </div>
-              </div>
+            <div class="tech-badge-logo">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg"
+                alt="Django"
+              />
+              <span>Django</span>
+            </div>
+            <div class="tech-badge-logo">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
+                alt="Docker"
+              />
+              <span>Docker</span>
+            </div>
+            <div class="tech-badge-logo">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg"
+                alt="Linux"
+              />
+              <span>Linux</span>
+            </div>
+            <div class="tech-badge-logo">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vim/vim-original.svg"
+                alt="Vim"
+              />
+              <span>Vim</span>
+            </div>
+            <div class="tech-badge-logo">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
+                alt="Figma"
+              />
+              <span>Figma</span>
             </div>
           </div>
         </div>
@@ -2836,6 +3088,33 @@
           document.body.style.overflow = "auto"; // Restore scrolling
         }
       }
+      function animateTimelineOnScroll() {
+        const timeline = document.querySelector(".timeline");
+        const timelineLine = document.querySelector(".timeline-line");
+
+        if (!timeline || !timelineLine) return;
+
+        const timelineRect = timeline.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+
+        // Calculate scroll progress
+        const scrollProgress = Math.max(
+          0,
+          Math.min(
+            1,
+            (windowHeight - timelineRect.top) /
+              (windowHeight + timelineRect.height)
+          )
+        );
+
+        // Set the height of timeline line
+        timelineLine.style.height = `${timelineRect.height * scrollProgress}px`;
+      }
+
+      // Add event listeners
+      window.addEventListener("scroll", animateTimelineOnScroll);
+      window.addEventListener("resize", animateTimelineOnScroll);
+      window.addEventListener("load", animateTimelineOnScroll);
     </script>
   </body>
 </html>
